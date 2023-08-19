@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bhuva-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: app.com
+    http:
+      paths:
+      - path: /monish
+        pathType: Prefix
+        backend:
+          service:
+            name: bhuva-monish
+            port:
+              number: 80
+      - path: /def
+        pathType: Prefix
+        backend:
+          service:
+            name: bhuva-def
+            port:
+              number: 80
