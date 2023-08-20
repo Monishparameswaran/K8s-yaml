@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monish-pod
+spec:
+  volumes:
+  - name: shared-vol
+    emptyDir: {}
+
+  containers:
+  - name: c1
+    image: nginx:latest
+    volumeMounts:
+    - name: shared-vol
+      mountPath: /usr/share/nginx/html
+    ports:
+    - containerPort: 80
+  - name: c2
+    image: busybox:latest
+    command: ["/bin/sh","-c"]
+    args: ["echo ' `date -u` ' > /tmp/index.html; sleep 1000"]
+    volumeMounts:
+    - name: shared-vol
+      mountPath: /tmp
