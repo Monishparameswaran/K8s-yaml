@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+    app: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: c1
+          image: nginx:latest
+          volumeMounts:
+            - name: data
+              mountPath: /usr/share/nginx/html
+      initContainers:
+        - name: c2
+          image: bitnami/git
+          command: ["/bin/sh","-c"]
+          args: ["git clone https://www.github.com/kunchalavikram1427/simple-html-page.git /temp"]
+          volumeMounts:
+            - name: data
+              mountPath: /temp
+      volumes:
+        - name: data
+          emptyDir: {}
