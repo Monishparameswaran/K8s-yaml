@@ -13,6 +13,8 @@ spec:
     ports:
     - containerPort: 8080
 
+
+    # finally do kubectl logs -f ambassodor # to see the logs of this pod
 ---
 
 apiVersion: v1
