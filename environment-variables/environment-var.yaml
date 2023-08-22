@@ -32,3 +32,5 @@ spec:
        
   restartPolicy: Never
 
+  #you will find,the pod is completed as soon,kubectl logs monish-env to see the output
+
