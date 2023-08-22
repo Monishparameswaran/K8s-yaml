@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monish-env
+spec:
+  containers:
+    - name: c1
+      image: registry.k8s.io/busybox
+      command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Pod name": $POD_NAME
+        echo "Pod IP": $POD_IP
+        echo "NodeName": $NODE_NAME
+      env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+   
+     
+            
+       
+  restartPolicy: Never
+
