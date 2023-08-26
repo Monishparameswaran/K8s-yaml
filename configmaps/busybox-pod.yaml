@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lilly
+spec:
+  containers:
+    - name: test-container
+      image: busybox:latest
+      command: ["/bin/sh","-c"]
+      args: ["sleep 3000"]
+      envFrom:
+      - configMapRef:
+          name: walto
+  restartPolicy: Never
