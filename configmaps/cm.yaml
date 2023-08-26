@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  COLOR: BLUE
+  NAME: MONISH
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: app-config
