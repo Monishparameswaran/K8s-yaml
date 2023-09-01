@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: testo
+  name: narod
+spec:
+  containers:
+  - image: nginx
+    name: testo
+    resources: {}
+    command: ["/bin/sh", "-c"]
+    args: 
+      - echo "POD NAME" $PODNAME
+      - echo "POD IP" $IP
+    env:
+    - name: PODNAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+
