@@ -1,3 +1,5 @@
+# dont forget to label any of the nodes with disk in hdd
+# eg "kubectl label node <name> disk=hdd"
 apiVersion: v1
 kind: Pod
 metadata:
