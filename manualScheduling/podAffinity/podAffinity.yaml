@@ -13,7 +13,7 @@ spec:
             values:
             - appu
             - mon
-        topologyKey: kubernetes.io/hostname
+        topologyKey: kubernetes.io/hostname  # notice this changing this value will affect pod scheduling
   containers:
   - name: with-pod
     image: nginx
