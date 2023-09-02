@@ -14,7 +14,7 @@ spec:
   - key: env
     operator: "Exists"
     effect: "NoExecute"
-    tolerationSeconds: 100
+    tolerationSeconds: 100 # this means even if we mark a node as NoExecute this node with tolerationSeconds can wait for 100 sec to terminate
 
   dnsPolicy: ClusterFirst
   restartPolicy: Always
